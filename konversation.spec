@@ -27,6 +27,7 @@ Patch5:         %{name}-1.0.1-fix-dcc-crash.patch
 #(nl) :  fix defective server list window with compiz
 Patch6:         %{name}-1.0.1-SVN_r604746.diff 
 Patch7:		%{name}-fix-fr-translation.patch
+Patch8:         konversation-1.0.1-fix-desktop-file.patch
 BuildRoot:	%{_tmppath}/%{name}-root
 URL:		http://konversation.sourceforge.net/
 Requires:	kdebase-progs >= 3.4
@@ -39,37 +40,6 @@ ignore list functionality; (experimental) support for foreign
 language characters; auto-connect to server; optional timestamps
 to chat windows; configurable background colors and much more.
 
-%prep
-%setup -q
-
-%patch2 -p1 -b .default_channel
-%patch4 -p0 -b .add_audacious_to_media
-%patch5 -p0 -b .fix_dcc_crash
-%patch6 -p0 -b .fix_serveur_under_compiz
-%patch7 -p0 -b .fix_fr_translation
-
-%build
-
-%configure --with-xinerama --disable-rpath
-%make
-
-%install
-rm -rf %{buildroot}
-%makeinstall PACKAGE=%{name}
-%{find_lang} %name
-
-# Menu
-mkdir -p $RPM_BUILD_ROOT%{_menudir}
-install -d %buildroot/%_menudir/
-kdedesktop2mdkmenu.pl %name Networking/IRC  %buildroot/%{_datadir}/applications/kde/%{name}.desktop %buildroot/%_menudir/%name kde
-
-#icon
-install -d $RPM_BUILD_ROOT/%{_iconsdir}
-install -d $RPM_BUILD_ROOT/%{_liconsdir}
-install -d $RPM_BUILD_ROOT/%{_miconsdir}
-install -m644 %{SOURCE1} $RPM_BUILD_ROOT/%{_miconsdir}/%{name}.png
-install -m644 %{SOURCE2} $RPM_BUILD_ROOT/%{_iconsdir}/%{name}.png
-install -m644 %{SOURCE3} $RPM_BUILD_ROOT/%{_liconsdir}/%{name}.png
 
 %post
 %{update_menus}
@@ -80,10 +50,6 @@ install -m644 %{SOURCE3} $RPM_BUILD_ROOT/%{_liconsdir}/%{name}.png
 %{clean_menus}
 %clean_icon_cache crystalsvg
 %clean_icon_cache hicolor
-
-%clean
-rm -rf %{buildroot}
-
 
 %files -f %{name}.lang
 %defattr(-,root,root,-)
@@ -176,5 +142,38 @@ rm -rf %{buildroot}
 %doc %_docdir/HTML/es/konversation/*.png
 
 
+
+#--------------------------------------------------------------------
+
+%prep
+%setup -q
+
+%patch2 -p1 -b .default_channel
+%patch4 -p0 -b .add_audacious_to_media
+%patch5 -p0 -b .fix_dcc_crash
+%patch6 -p0 -b .fix_serveur_under_compiz
+%patch7 -p0 -b .fix_fr_translation
+%patch8 -p0 -b .fix_desktop_file
+
+%build
+
+%configure --with-xinerama --disable-rpath
+%make
+
+%install
+rm -rf %{buildroot}
+%makeinstall PACKAGE=%{name}
+%{find_lang} %name
+
+#icon
+install -d $RPM_BUILD_ROOT/%{_iconsdir}
+install -d $RPM_BUILD_ROOT/%{_liconsdir}
+install -d $RPM_BUILD_ROOT/%{_miconsdir}
+install -m644 %{SOURCE1} $RPM_BUILD_ROOT/%{_miconsdir}/%{name}.png
+install -m644 %{SOURCE2} $RPM_BUILD_ROOT/%{_iconsdir}/%{name}.png
+install -m644 %{SOURCE3} $RPM_BUILD_ROOT/%{_liconsdir}/%{name}.png
+
+%clean
+rm -rf %{buildroot}
 
 
