@@ -26,6 +26,7 @@ Patch4:         %{name}-1.0.1-add-audacious-to-media.patch
 Patch5:         %{name}-1.0.1-fix-dcc-crash.patch
 #(nl) :  fix defective server list window with compiz
 Patch6:         %{name}-1.0.1-SVN_r604746.diff 
+Patch7:		%{name}-fix-fr-translation.patch
 BuildRoot:	%{_tmppath}/%{name}-root
 URL:		http://konversation.sourceforge.net/
 Requires:	kdebase-progs >= 3.4
@@ -45,6 +46,7 @@ to chat windows; configurable background colors and much more.
 %patch4 -p0 -b .add_audacious_to_media
 %patch5 -p0 -b .fix_dcc_crash
 %patch6 -p0 -b .fix_serveur_under_compiz
+%patch7 -p0 -b .fix_fr_translation
 
 %build
 
@@ -71,17 +73,13 @@ install -m644 %{SOURCE3} $RPM_BUILD_ROOT/%{_liconsdir}/%{name}.png
 
 %post
 %{update_menus}
-%if %mdkversion > 200600
 %update_icon_cache crystalsvg
 %update_icon_cache hicolor
-%endif
 
 %postun
 %{clean_menus}
-%if %mdkversion > 200600
 %clean_icon_cache crystalsvg
 %clean_icon_cache hicolor
-%endif
 
 %clean
 rm -rf %{buildroot}
