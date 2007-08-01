@@ -1,34 +1,37 @@
-# THIS PACKAGE IS HOSTED AT MANDRIVA SVN
-# PLEASE DO NOT UPLOAD DIRECTLY BEFORE COMMIT
+%define _requires_exceptions devel\(linux-gate\)
 
+%define __libtoolize    /bin/true
+%define launchers /etc/dynamic/launchers/scanner
 
-%define name	konversation
-%define version	1.0.1
-%define release	%mkrel 7
+%define use_enable_final 0
+%{?_no_enable_final: %{expand: %%global use_enable_final 0}}
 
-Name:		%name
-Summary:	A user friendly IRC Client for KDE
-Version:	%version
-Release:	%release
-License:	GPL
-Group:		Networking/IRC
-Source0:	http://download2.berlios.de/konversation/%{name}-%{version}.tar.bz2
-Patch2:		%{name}-0.19-default_channel.patch
-# (nl) : Feature 138836
-Patch4:		%{name}-1.0.1-add-audacious-to-media.patch
-# (nl) : mdv bug: 28019 kde bug: 133312
-Patch5:		%{name}-1.0.1-fix-dcc-crash.patch
-#(nl) :  fix defective server list window with compiz
-Patch6:		%{name}-1.0.1-SVN_r604746.diff 
-Patch7:		%{name}-fix-fr-translation.patch
-Patch8:		%{name}-1.0.1-fix-desktop-file.patch
-BuildRoot:	%{_tmppath}/%{name}-root
-URL:		http://konversation.kde.org
-Requires:	kdebase-progs >= 3.4
-BuildRequires:	kdebase-devel
+%define unstable 0
+%{?_unstable: %{expand: %%global unstable 1}}
+
+%if %unstable
+%define use_enable_final 0
+%define dont_strip 1
+%endif
+
+Name: konversation
+Version: 1.0.1
+Release: %mkrel 8
+Summary: A user friendly IRC Client for KDE
+License: GPL
+Group: Networking/IRC
+URL: http://konversation.kde.org
+Source0: http://download2.berlios.de/konversation/%{name}-%{version}.tar.bz2
+Patch0: %{name}-0.19-default_channel.patch
+Patch1: %{name}-1.0.1-add-audacious-to-media.patch
+Patch2: %{name}-1.0.1-fix-dcc-crash.patch
+Patch3: %{name}-1.0.1-SVN_r604746.diff 
+Patch4:	%{name}-fix-fr-translation.patch
+Patch5:	%{name}-1.0.1-fix-desktop-file.patch
+BuildRoot: %{_tmppath}/%{name}-root
+BuildRequires: kdelibs-devel
 
 %description
-
 Konversation is a graphical Internet Relay Chat client (IRC)
 with KDE support.
 
@@ -63,107 +66,54 @@ Features:
 %doc README
 %{_bindir}/%{name}
 %{_bindir}/%{name}ircprotocolhandler
-
 %dir %{_datadir}/apps/%{name}
 %{_datadir}/apps/%{name}
 %{_datadir}/applications/kde/%{name}.desktop
-%{_iconsdir}/crystalsvg/16x16/actions/kimproxyaway.png
-%{_iconsdir}/crystalsvg/16x16/actions/kimproxyoffline.png
-%{_iconsdir}/crystalsvg/16x16/actions/kimproxyonline.png
-%{_iconsdir}/crystalsvg/22x22/actions/char.png
-%{_iconsdir}/crystalsvg/22x22/actions/kimproxyaway.png
-%{_iconsdir}/crystalsvg/22x22/actions/kimproxyoffline.png
-%{_iconsdir}/crystalsvg/22x22/actions/kimproxyonline.png
-%{_iconsdir}/crystalsvg/22x22/actions/konv_message.png
-%{_iconsdir}/crystalsvg/32x32/actions/kimproxyaway.png
-%{_iconsdir}/crystalsvg/32x32/actions/kimproxyoffline.png
-%{_iconsdir}/crystalsvg/32x32/actions/kimproxyonline.png
-%{_iconsdir}/crystalsvg/scalable/actions/kimproxyaway.svgz
-%{_iconsdir}/crystalsvg/scalable/actions/kimproxyoffline.svgz
-%{_iconsdir}/crystalsvg/scalable/actions/kimproxyonline.svgz
-%{_iconsdir}/crystalsvg/scalable/actions/konv_message.svgz
-%{_iconsdir}/hicolor/*/apps/konversation.png
-%{_iconsdir}/hicolor/scalable/apps/konversation.svgz
-
-%_datadir/apps/kconf_update/*.pl
-%_datadir/apps/kconf_update/konversation.upd
-   
-%dir %_docdir/HTML/da/konversation/
-%doc %_docdir/HTML/da/konversation/common
-%doc %_docdir/HTML/da/konversation/*.bz2
-%doc %_docdir/HTML/da/konversation/*.docbook
-   
-%dir %_docdir/HTML/en/konversation/
-%doc %_docdir/HTML/en/konversation/common
-%doc %_docdir/HTML/en/konversation/*.bz2
-%doc %_docdir/HTML/en/konversation/*.docbook
-%doc %_docdir/HTML/en/konversation/*.png
-
-%dir %_docdir/HTML/et/konversation/
-%doc %_docdir/HTML/et/konversation/common
-%doc %_docdir/HTML/et/konversation/*.bz2
-%doc %_docdir/HTML/et/konversation/*.docbook
-
-%dir %_docdir/HTML/it/konversation/
-%doc %_docdir/HTML/it/konversation/common
-%doc %_docdir/HTML/it/konversation/*.bz2
-%doc %_docdir/HTML/it/konversation/*.docbook
-%doc %_docdir/HTML/it/konversation/*.png
-
-%dir %_docdir/HTML/pt/konversation/
-%doc %_docdir/HTML/pt/konversation/common
-%doc %_docdir/HTML/pt/konversation/*.bz2
-%doc %_docdir/HTML/pt/konversation/*.docbook
-
-%dir %_docdir/HTML/ru/konversation/
-%doc %_docdir/HTML/ru/konversation/common
-%doc %_docdir/HTML/ru/konversation/*.bz2
-%doc %_docdir/HTML/ru/konversation/*.docbook
-
-%dir %_docdir/HTML/sv/konversation/
-%doc %_docdir/HTML/sv/konversation/common
-%doc %_docdir/HTML/sv/konversation/*.bz2
-%doc %_docdir/HTML/sv/konversation/*.docbook
-%doc %_docdir/HTML/sv/konversation/*.png
-
-%dir %_docdir/HTML/nl/konversation/
-%doc %_docdir/HTML/nl/konversation/common
-%doc %_docdir/HTML/nl/konversation/*.bz2
-%doc %_docdir/HTML/nl/konversation/*.docbook
-%doc %_docdir/HTML/nl/konversation/*.png
-   
+%{_iconsdir}/*/*/*/*
+%_datadir/apps/kconf_update/*
+%_docdir/HTML/*/konversation
 %_datadir/config.kcfg/konversation.kcfg
-%_datadir/services/konvirc.protocol
-%_datadir/services/konvirc6.protocol
-
-%doc %_docdir/HTML/es/konversation/*.png
+%_datadir/services/*
 
 #--------------------------------------------------------------------
 
 %prep
 %setup -q
-
-%patch2 -p1 -b .default_channel
-%patch4 -p0 -b .add_audacious_to_media
-%patch5 -p0 -b .fix_dcc_crash
-%patch6 -p0 -b .fix_serveur_under_compiz
-%patch7 -p0 -b .fix_fr_translation
-%patch8 -p0 -b .fix_desktop_file
+%patch0 -p1 -b .default_channel
+%patch1 -p0 -b .add_audacious_to_media
+%patch2 -p0 -b .fix_dcc_crash
+%patch3 -p0 -b .fix_serveur_under_compiz
+%patch4 -p0 -b .fix_fr_translation
+%patch5 -p0 -b .fix_desktop_file
 
 %build
-
 %configure2_5x \
+%if %unstable
+	--enable-debug=full \
+%else
+	--disable-debug \
+%endif
+%if %use_enable_final
+	--enable-final \
+%else
+	--disable-final \
+%endif
+	--disable-static \
+%if "%{_lib}" != "lib"
+    --enable-libsuffix="%(A=%{_lib}; echo ${A/lib/})" \
+%endif
 	--disable-rpath \
-	--enable-nmcheck \
-	--enable-pch \
-	--enable-new-ldflags
+	--with-xinerama 
+
 %make
 
 %install
 rm -rf %{buildroot}
-%makeinstall_std PACKAGE=%{name}
+
+%makeinstall_std
 
 %find_lang %{name}
 
 %clean
 rm -rf %{buildroot}
+
