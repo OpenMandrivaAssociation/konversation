@@ -157,7 +157,12 @@ to chat windows; configurable background colors and much more.
 
 %build
 
-%configure --with-xinerama --disable-rpath
+%configure2_5x \
+	--disable-rpath \
+	--enable-nmcheck \
+	--enable-pch \
+	--enable-final \
+	--enable-new-ldflags
 %make
 
 %install
@@ -175,5 +180,3 @@ install -m644 %{SOURCE3} $RPM_BUILD_ROOT/%{_liconsdir}/%{name}.png
 
 %clean
 rm -rf %{buildroot}
-
-
