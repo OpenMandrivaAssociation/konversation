@@ -156,7 +156,6 @@ Features:
 	--disable-rpath \
 	--enable-nmcheck \
 	--enable-pch \
-	--enable-final \
 	--enable-new-ldflags
 %make
 
