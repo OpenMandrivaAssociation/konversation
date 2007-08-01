@@ -12,29 +12,42 @@ Version:	%version
 Release:	%release
 License:	GPL
 Group:		Networking/IRC
-Source0:	%{name}-%{version}.tar.bz2
+Source0:	http://download2.berlios.de/konversation/%{name}-%{version}.tar.bz2
 Patch2:		%{name}-0.19-default_channel.patch
 # (nl) : Feature 138836
-Patch4:         %{name}-1.0.1-add-audacious-to-media.patch
+Patch4:		%{name}-1.0.1-add-audacious-to-media.patch
 # (nl) : mdv bug: 28019 kde bug: 133312
-Patch5:         %{name}-1.0.1-fix-dcc-crash.patch
+Patch5:		%{name}-1.0.1-fix-dcc-crash.patch
 #(nl) :  fix defective server list window with compiz
-Patch6:         %{name}-1.0.1-SVN_r604746.diff 
+Patch6:		%{name}-1.0.1-SVN_r604746.diff 
 Patch7:		%{name}-fix-fr-translation.patch
-Patch8:         konversation-1.0.1-fix-desktop-file.patch
+Patch8:		%{name}-1.0.1-fix-desktop-file.patch
 BuildRoot:	%{_tmppath}/%{name}-root
-URL:		http://konversation.sourceforge.net/
+URL:		http://konversation.kde.org
 Requires:	kdebase-progs >= 3.4
 BuildRequires:	kdebase-devel
 
 %description
-A simple and easy to use IRC client for KDE with support for
-strikeout; multi-channel joins; away / unaway messages; 
-ignore list functionality; (experimental) support for foreign 
-language characters; auto-connect to server; optional timestamps
-to chat windows; configurable background colors and much more.
 
+Konversation is a graphical Internet Relay Chat client (IRC)
+with KDE support.
 
+Features:
+
+* Standard IRC features
+* SSL server support
+* Bookmarking support
+* Easy to use graphical user interface
+* Multiple servers and channels in one single window
+* DCC file transfer
+* Multiple identities for different servers
+* Text decorations and colors
+* OnScreen Display for notifications
+* Automatic UTF-8 detection
+* Per channel encoding support
+* Theme support for nick icons
+* Highly configurable
+						    
 %post
 %{update_menus}
 %update_icon_cache crystalsvg
@@ -54,7 +67,6 @@ to chat windows; configurable background colors and much more.
 %dir %{_datadir}/apps/%{name}
 %{_datadir}/apps/%{name}
 %{_datadir}/applications/kde/%{name}.desktop
-
 %{_iconsdir}/crystalsvg/16x16/actions/kimproxyaway.png
 %{_iconsdir}/crystalsvg/16x16/actions/kimproxyoffline.png
 %{_iconsdir}/crystalsvg/16x16/actions/kimproxyonline.png
@@ -70,16 +82,8 @@ to chat windows; configurable background colors and much more.
 %{_iconsdir}/crystalsvg/scalable/actions/kimproxyoffline.svgz
 %{_iconsdir}/crystalsvg/scalable/actions/kimproxyonline.svgz
 %{_iconsdir}/crystalsvg/scalable/actions/konv_message.svgz
-%{_iconsdir}/hicolor/128x128/apps/konversation.png
-%{_iconsdir}/hicolor/16x16/apps/konversation.png
-%{_iconsdir}/hicolor/22x22/apps/konversation.png
-%{_iconsdir}/hicolor/32x32/apps/konversation.png
-%{_iconsdir}/hicolor/48x48/apps/konversation.png
-%{_iconsdir}/hicolor/64x64/apps/konversation.png
+%{_iconsdir}/hicolor/*/apps/konversation.png
 %{_iconsdir}/hicolor/scalable/apps/konversation.svgz
-%{_iconsdir}/konversation.png
-%{_liconsdir}/konversation.png
-%{_miconsdir}/konversation.png
 
 %_datadir/apps/kconf_update/*.pl
 %_datadir/apps/kconf_update/konversation.upd
@@ -134,8 +138,6 @@ to chat windows; configurable background colors and much more.
 
 %doc %_docdir/HTML/es/konversation/*.png
 
-
-
 #--------------------------------------------------------------------
 
 %prep
@@ -160,8 +162,9 @@ to chat windows; configurable background colors and much more.
 
 %install
 rm -rf %{buildroot}
-%makeinstall PACKAGE=%{name}
-%{find_lang} %name
+%makeinstall_std PACKAGE=%{name}
+
+%find_lang %{name}
 
 %clean
 rm -rf %{buildroot}
