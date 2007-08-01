@@ -12,13 +12,7 @@ Version:	%version
 Release:	%release
 License:	GPL
 Group:		Networking/IRC
-
 Source0:	%{name}-%{version}.tar.bz2
-Source1:	%{name}_16.png
-Source2:	%{name}_32.png
-Source3:	%{name}_48.png
-
-
 Patch2:		%{name}-0.19-default_channel.patch
 # (nl) : Feature 138836
 Patch4:         %{name}-1.0.1-add-audacious-to-media.patch
@@ -87,7 +81,6 @@ to chat windows; configurable background colors and much more.
 %{_liconsdir}/konversation.png
 %{_miconsdir}/konversation.png
 
-%{_menudir}/%{name}
 %_datadir/apps/kconf_update/*.pl
 %_datadir/apps/kconf_update/konversation.upd
    
@@ -169,14 +162,6 @@ to chat windows; configurable background colors and much more.
 rm -rf %{buildroot}
 %makeinstall PACKAGE=%{name}
 %{find_lang} %name
-
-#icon
-install -d $RPM_BUILD_ROOT/%{_iconsdir}
-install -d $RPM_BUILD_ROOT/%{_liconsdir}
-install -d $RPM_BUILD_ROOT/%{_miconsdir}
-install -m644 %{SOURCE1} $RPM_BUILD_ROOT/%{_miconsdir}/%{name}.png
-install -m644 %{SOURCE2} $RPM_BUILD_ROOT/%{_iconsdir}/%{name}.png
-install -m644 %{SOURCE3} $RPM_BUILD_ROOT/%{_liconsdir}/%{name}.png
 
 %clean
 rm -rf %{buildroot}
