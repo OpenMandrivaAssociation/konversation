@@ -28,6 +28,7 @@ Patch2: %{name}-1.0.1-fix-dcc-crash.patch
 Patch3: %{name}-1.0.1-SVN_r604746.diff 
 Patch4:	%{name}-fix-fr-translation.patch
 Patch5:	%{name}-1.0.1-fix-desktop-file.patch
+BuildRoot: %{_tmppath}/%{name}-root
 BuildRequires: kdelibs-devel
 
 %description
