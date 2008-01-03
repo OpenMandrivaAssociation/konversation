@@ -16,7 +16,7 @@
 
 Name: konversation
 Version: 1.0.1
-Release: %mkrel 8
+Release: %mkrel 9
 Summary: A user friendly IRC Client for KDE
 License: GPL
 Group: Networking/IRC
@@ -30,6 +30,7 @@ Patch4:	%{name}-fix-fr-translation.patch
 Patch5:	%{name}-1.0.1-fix-desktop-file.patch
 BuildRoot: %{_tmppath}/%{name}-root
 BuildRequires: kdelibs-devel
+BuildRequires: openldap-devel
 
 %description
 Konversation is a graphical Internet Relay Chat client (IRC)
