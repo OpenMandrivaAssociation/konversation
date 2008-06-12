@@ -52,15 +52,19 @@ Features:
 * Theme support for nick icons
 * Highly configurable
 						    
+%if %mdkversion < 200900
 %post
 %{update_menus}
 %update_icon_cache crystalsvg
 %update_icon_cache hicolor
+%endif
 
+%if %mdkversion < 200900
 %postun
 %{clean_menus}
 %clean_icon_cache crystalsvg
 %clean_icon_cache hicolor
+%endif
 
 %files -f %{name}.lang
 %defattr(-,root,root,-)
