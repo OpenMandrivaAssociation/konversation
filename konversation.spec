@@ -1,33 +1,14 @@
-%define _requires_exceptions devel\(linux-gate\)
-
-%define __libtoolize    /bin/true
-%define launchers /etc/dynamic/launchers/scanner
-
-%define use_enable_final 0
-%{?_no_enable_final: %{expand: %%global use_enable_final 0}}
-
-%define unstable 0
-%{?_unstable: %{expand: %%global unstable 1}}
-
-%if %unstable
-%define use_enable_final 0
-%define dont_strip 1
-%endif
+%define betaver rc1
 
 Name: konversation
-Version: 1.0.1
-Release: %mkrel 9
+Version: 1.1
+Release: %mkrel -c %betaver 1
 Summary: A user friendly IRC Client for KDE
 License: GPL
 Group: Networking/IRC
 URL: http://konversation.kde.org
-Source0: http://download2.berlios.de/konversation/%{name}-%{version}.tar.bz2
+Source0: http://download2.berlios.de/konversation/%{name}-%{version}%{betaver}.tar.bz2
 Patch0: %{name}-0.19-default_channel.patch
-Patch1: %{name}-1.0.1-add-audacious-to-media.patch
-Patch2: %{name}-1.0.1-fix-dcc-crash.patch
-Patch3: %{name}-1.0.1-SVN_r604746.diff 
-Patch4:	%{name}-fix-fr-translation.patch
-Patch5:	%{name}-1.0.1-fix-desktop-file.patch
 BuildRoot: %{_tmppath}/%{name}-root
 BuildRequires: kdelibs-devel
 BuildRequires: openldap-devel
@@ -69,47 +50,22 @@ Features:
 %files -f %{name}.lang
 %defattr(-,root,root,-)
 %doc README
-%{_bindir}/%{name}
-%{_bindir}/%{name}ircprotocolhandler
-%dir %{_datadir}/apps/%{name}
-%{_datadir}/apps/%{name}
-%{_datadir}/applications/kde/%{name}.desktop
-%{_iconsdir}/*/*/*/*
-%_datadir/apps/kconf_update/*
-%_docdir/HTML/*/konversation
-%_datadir/config.kcfg/konversation.kcfg
-%_datadir/services/*
+%{_kde3_bindir}/*
+%{_kde3_datadir}/apps/%{name}
+%{_kde3_datadir}/applications/kde/%{name}.desktop
+%{_kde3_iconsdir}/*/*/*/*
+%_kde3_datadir/apps/kconf_update/*
+%_kde3_datadir/config.kcfg/konversation.kcfg
+%_kde3_datadir/services/*
 
 #--------------------------------------------------------------------
 
 %prep
-%setup -q
+%setup -q -n %name-%version%betaver
 %patch0 -p1 -b .default_channel
-%patch1 -p0 -b .add_audacious_to_media
-%patch2 -p0 -b .fix_dcc_crash
-%patch3 -p0 -b .fix_serveur_under_compiz
-%patch4 -p0 -b .fix_fr_translation
-%patch5 -p0 -b .fix_desktop_file
 
 %build
-%configure2_5x \
-%if %unstable
-	--enable-debug=full \
-%else
-	--disable-debug \
-%endif
-%if %use_enable_final
-	--enable-final \
-%else
-	--disable-final \
-%endif
-	--disable-static \
-%if "%{_lib}" != "lib"
-    --enable-libsuffix="%(A=%{_lib}; echo ${A/lib/})" \
-%endif
-	--disable-rpath \
-	--with-xinerama 
-
+%configure_kde3
 %make
 
 %install
@@ -117,7 +73,7 @@ rm -rf %{buildroot}
 
 %makeinstall_std
 
-%find_lang %{name}
+%find_lang %{name} --with-html
 
 %clean
 rm -rf %{buildroot}
