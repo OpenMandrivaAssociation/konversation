@@ -9,6 +9,7 @@ Source0: http://download2.berlios.de/konversation/%{name}-%{version}.tar.bz2
 Patch0: %{name}-0.19-default_channel.patch
 Patch1: konversation-1.1-add-amarok2-support.patch
 Patch2: konversation-1.1-add-pt_BR.patch
+Patch3: konversation-post-1.1-rev861574.patch
 BuildRoot: %{_tmppath}/%{name}-root
 BuildRequires: kdelibs-devel
 BuildRequires: openldap-devel
@@ -65,6 +66,7 @@ Features:
 %patch0 -p1 -b .default_channel
 %patch1 -p0
 %patch2 -p1
+%patch3 -p0
 
 %build
 %configure_kde3
