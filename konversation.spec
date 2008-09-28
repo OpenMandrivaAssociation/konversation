@@ -1,6 +1,6 @@
 Name: konversation
 Version: 1.1
-Release: %mkrel 1
+Release: %mkrel 2  
 Summary: A user friendly IRC Client for KDE
 License: GPL
 Group: Networking/IRC
@@ -8,6 +8,7 @@ URL: http://konversation.kde.org
 Source0: http://download2.berlios.de/konversation/%{name}-%{version}.tar.bz2
 Patch0: %{name}-0.19-default_channel.patch
 Patch1: konversation-1.1-add-amarok2-support.patch
+Patch2: konversation-1.1-add-pt_BR.patch
 BuildRoot: %{_tmppath}/%{name}-root
 BuildRequires: kdelibs-devel
 BuildRequires: openldap-devel
@@ -63,6 +64,7 @@ Features:
 %setup -q -n %name-%version
 %patch0 -p1 -b .default_channel
 %patch1 -p0
+%patch2 -p1
 
 %build
 %configure_kde3
