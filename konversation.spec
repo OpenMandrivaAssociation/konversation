@@ -1,17 +1,20 @@
+%define oname konvi-kde4
+%define svn 965153
+
 Name: konversation
-Version: 1.1
-Release: %mkrel 2  
+Version: 1.1.75
+Release: %mkrel 0.%svn.1  
 Summary: A user friendly IRC Client for KDE
 License: GPL
 Group: Networking/IRC
 URL: http://konversation.kde.org
-Source0: http://download2.berlios.de/konversation/%{name}-%{version}.tar.bz2
+Source0: http://download2.berlios.de/konversation/%{oname}-%{version}.%svn.tar.bz2
 Patch0: %{name}-0.19-default_channel.patch
 Patch1: konversation-1.1-add-amarok2-support.patch
 Patch2: konversation-1.1-add-pt_BR.patch
 Patch3: konversation-post-1.1-rev861574.patch
 BuildRoot: %{_tmppath}/%{name}-root
-BuildRequires: kdelibs-devel
+BuildRequires: kdelibs4-devel
 BuildRequires: openldap-devel
 
 %description
@@ -34,50 +37,35 @@ Features:
 * Theme support for nick icons
 * Highly configurable
 						    
-%if %mdkversion < 200900
-%post
-%{update_menus}
-%update_icon_cache crystalsvg
-%update_icon_cache hicolor
-%endif
-
-%if %mdkversion < 200900
-%postun
-%{clean_menus}
-%clean_icon_cache crystalsvg
-%clean_icon_cache hicolor
-%endif
-
-%files -f %{name}.lang
+%files
 %defattr(-,root,root,-)
 %doc README
-%{_kde3_bindir}/*
-%{_kde3_datadir}/apps/%{name}
-%{_kde3_datadir}/applications/kde/%{name}.desktop
-%{_kde3_iconsdir}/*/*/*/*
-%_kde3_datadir/apps/kconf_update/*
-%_kde3_datadir/config.kcfg/konversation.kcfg
-%_kde3_datadir/services/*
+%{_kde_bindir}/*
+%{_kde_datadir}/apps/%{name}
+%{_kde_datadir}/applications/kde4/%{name}.desktop
+%{_kde_iconsdir}/*/*/*/*
+%_kde_datadir/apps/kconf_update/*
+%_kde_datadir/kde4/services/konvirc.protocol
+%_kde_datadir/kde4/services/konvirc6.protocol
+%_kde_docdir/HTML/en/konversation
 
 #--------------------------------------------------------------------
 
 %prep
-%setup -q -n %name-%version
-%patch0 -p1 -b .default_channel
-%patch1 -p0
-%patch2 -p1
-%patch3 -p0
+%setup -q -n %oname
+#%patch0 -p1 -b .default_channel
+#%patch1 -p0
+#%patch2 -p1
+#%patch3 -p0
 
 %build
-%configure_kde3
+%cmake_kde4
 %make
 
 %install
 rm -rf %{buildroot}
-
+cd build
 %makeinstall_std
-
-%find_lang %{name} --with-html
 
 %clean
 rm -rf %{buildroot}
