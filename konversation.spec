@@ -15,6 +15,7 @@ Patch2: konversation-1.1-add-pt_BR.patch
 Patch3: konversation-post-1.1-rev861574.patch
 BuildRoot: %{_tmppath}/%{name}-root
 BuildRequires: kdelibs4-devel
+BuildRequires: kdepimlibs4-devel
 BuildRequires: openldap-devel
 
 %description
