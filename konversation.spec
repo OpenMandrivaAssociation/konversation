@@ -1,5 +1,4 @@
-%define oname konvi-kde4
-%define svn 965153
+%define svn 968862
 
 Name: konversation
 Version: 1.1.75
@@ -8,7 +7,7 @@ Summary: A user friendly IRC Client for KDE
 License: GPL
 Group: Networking/IRC
 URL: http://konversation.kde.org
-Source0: http://download2.berlios.de/konversation/%{oname}-%{version}.%svn.tar.bz2
+Source0: http://download2.berlios.de/konversation/%{name}-%{version}.%svn.tar.bz2
 Patch0: %{name}-0.19-default_channel.patch
 Patch1: konversation-1.1-add-amarok2-support.patch
 Patch2: konversation-1.1-add-pt_BR.patch
@@ -53,7 +52,7 @@ Features:
 #--------------------------------------------------------------------
 
 %prep
-%setup -q -n %oname
+%setup -q -n %name
 #%patch0 -p1 -b .default_channel
 #%patch1 -p0
 #%patch2 -p1
