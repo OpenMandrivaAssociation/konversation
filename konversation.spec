@@ -1,13 +1,13 @@
-%define svn 968862
+%define prever alpha2
 
 Name: konversation
-Version: 1.1.75
-Release: %mkrel 0.%svn.1  
+Version: 1.2
+Release: %mkrel 0.%prever.1  
 Summary: A user friendly IRC Client for KDE
 License: GPL
 Group: Networking/IRC
 URL: http://konversation.kde.org
-Source0: http://download2.berlios.de/konversation/%{name}-%{version}.%svn.tar.bz2
+Source0: http://download2.berlios.de/konversation/%{name}-%{version}-%prever.tar.bz2
 Patch0: %{name}-0.19-default_channel.patch
 Patch1: konversation-1.1-add-amarok2-support.patch
 Patch2: konversation-1.1-add-pt_BR.patch
@@ -37,7 +37,7 @@ Features:
 * Theme support for nick icons
 * Highly configurable
 						    
-%files
+%files -f build/%name.lang
 %defattr(-,root,root,-)
 %doc README
 %{_kde_bindir}/*
@@ -51,7 +51,7 @@ Features:
 #--------------------------------------------------------------------
 
 %prep
-%setup -q -n %name
+%setup -q -n %{name}-%{version}-%prever
 #%patch0 -p1 -b .default_channel
 #%patch1 -p0
 #%patch2 -p1
@@ -65,6 +65,8 @@ Features:
 rm -rf %{buildroot}
 cd build
 %makeinstall_std
+
+%find_lang --with-html %name 
 
 %clean
 rm -rf %{buildroot}
