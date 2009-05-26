@@ -9,7 +9,6 @@ Group: Networking/IRC
 URL: http://konversation.kde.org
 Source0: http://download2.berlios.de/konversation/%{name}-%{version}-%prever.tar.bz2
 Patch0: %{name}-1.2-default_channel.patch
-Patch2: konversation-1.1-add-pt_BR.patch
 BuildRoot: %{_tmppath}/%{name}-root
 BuildRequires: kdelibs4-devel
 BuildRequires: kdepimlibs4-devel
@@ -51,7 +50,6 @@ Features:
 %prep
 %setup -q -n %{name}-%{version}-%prever
 %patch0 -p1 -b .default_channel
-#%patch2 -p1
 
 %build
 %cmake_kde4
