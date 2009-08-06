@@ -1,4 +1,4 @@
-%define prever alpha4
+%define prever alpha5
 
 Name: konversation
 Version: 1.2
@@ -12,6 +12,7 @@ Patch0: %{name}-1.2-default_channel.patch
 BuildRoot: %{_tmppath}/%{name}-root
 BuildRequires: kdelibs4-devel
 BuildRequires: kdepimlibs4-devel
+BuildRequires: qca2-devel
 BuildRequires: openldap-devel
 
 %description
