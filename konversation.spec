@@ -1,4 +1,4 @@
-%define prever alpha6
+%define prever beta1
 
 Name: konversation
 Version: 1.2
