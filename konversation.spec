@@ -1,8 +1,8 @@
-%define prever beta1
+%define prever rc1
 
 Name: konversation
 Version: 1.2
-Release: %mkrel 0.%prever.2
+Release: %mkrel 0.%prever.1
 Summary: A user friendly IRC Client for KDE
 License: GPL
 Group: Networking/IRC
