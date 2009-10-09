@@ -1,13 +1,11 @@
-%define prever rc1
-
 Name: konversation
 Version: 1.2
-Release: %mkrel 0.%prever.1
+Release: %mkrel 1
 Summary: A user friendly IRC Client for KDE
 License: GPL
 Group: Networking/IRC
 URL: http://konversation.kde.org
-Source0: http://download2.berlios.de/konversation/%{name}-%{version}-%prever.tar.bz2
+Source0: http://download2.berlios.de/konversation/%{name}-%{version}.tar.bz2
 Patch0: %{name}-1.2-default_channel.patch
 BuildRoot: %{_tmppath}/%{name}-root
 BuildRequires: kdelibs4-devel
@@ -36,7 +34,7 @@ Features:
 * Theme support for nick icons
 * Highly configurable
 						    
-%files -f build/%name.lang
+%files -f %name.lang
 %defattr(-,root,root,-)
 %doc README
 %{_kde_bindir}/*
@@ -50,7 +48,7 @@ Features:
 #--------------------------------------------------------------------
 
 %prep
-%setup -q -n %{name}-%{version}-%prever
+%setup -q -n %{name}-%{version}
 %patch0 -p1 -b .default_channel
 
 %build
@@ -59,8 +57,7 @@ Features:
 
 %install
 rm -rf %{buildroot}
-cd build
-%makeinstall_std
+%makeinstall_std -C build
 
 %find_lang --with-html %name 
 
