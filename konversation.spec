@@ -7,7 +7,7 @@ Group: Networking/IRC
 URL: http://konversation.kde.org
 Source0: http://download2.berlios.de/konversation/%{name}-%{version}.tar.bz2
 Patch0: %{name}-1.2-default_channel.patch
-Patch1: %{name}-1.2-fix-bad-default-configuration.patch
+Patch1: %{name}-1.2-b1041186-fix-dcc-location.patch
 BuildRoot: %{_tmppath}/%{name}-root
 BuildRequires: kdelibs4-devel
 BuildRequires: kdepimlibs4-devel
@@ -51,7 +51,7 @@ Features:
 %prep
 %setup -q -n %{name}-%{version}
 %patch0 -p1 -b .default_channel
-%patch1 -p1 -b .fix_bad_default_config
+%patch1 -p0
 
 %build
 %cmake_kde4
