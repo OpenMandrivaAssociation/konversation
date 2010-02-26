@@ -33,6 +33,19 @@ Features:
 * Per channel encoding support
 * Theme support for nick icons
 * Highly configurable
+
+%files -f %name.lang
+%defattr(-,root,root,-)
+%doc README
+%{_kde_bindir}/*
+%{_kde_datadir}/apps/%{name}
+%{_kde_datadir}/applications/kde4/%{name}.desktop
+%{_kde_iconsdir}/*/*/*/*
+%_kde_datadir/apps/kconf_update/*
+%_kde_datadir/kde4/services/konvirc.protocol
+%_kde_datadir/kde4/services/konvirc6.protocol
+
+#--------------------------------------------------------------------
 						    
 %prep
 %setup -q -n %{name}-%{version}
@@ -50,13 +63,3 @@ rm -rf %{buildroot}
 %clean
 rm -rf %{buildroot}
 
-%files -f %name.lang
-%defattr(-,root,root,-)
-%doc README
-%{_kde_bindir}/*
-%{_kde_datadir}/apps/%{name}
-%{_kde_datadir}/applications/kde4/%{name}.desktop
-%{_kde_iconsdir}/*/*/*/*
-%_kde_datadir/apps/kconf_update/*
-%_kde_datadir/kde4/services/konvirc.protocol
-%_kde_datadir/kde4/services/konvirc6.protocol
