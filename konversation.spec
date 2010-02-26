@@ -1,18 +1,18 @@
-Name: konversation
-Version: 1.2.3
-Release: %mkrel 1
-Summary: A user friendly IRC Client for KDE
-License: GPL
-Group: Networking/IRC
-URL: http://konversation.kde.org
-Source0: http://fr2.rpmfind.net/linux/KDE/stable/konversation/%{version}/src/%{name}-%{version}.tar.bz2
-Patch0: %{name}-1.2-default_channel.patch
-BuildRoot: %{_tmppath}/%{name}-root
-BuildRequires: kdelibs4-devel
-BuildRequires: kdepimlibs4-devel
-BuildRequires: qca2-devel
-BuildRequires: openldap-devel
-Provides: kde4-irc-client
+Name:		konversation
+Version:	1.2.3
+Release:	%mkrel 2
+Summary:	A user friendly IRC Client for KDE
+License:	GPLv2
+Group:		Networking/IRC
+URL:		http://konversation.kde.org
+Source0:	http://fr2.rpmfind.net/linux/KDE/stable/konversation/%{version}/src/%{name}-%{version}.tar.bz2
+Patch0:		%{name}-1.2-default_channel.patch
+BuildRoot:	%{_tmppath}/%{name}-root
+BuildRequires:	kdelibs4-devel
+BuildRequires:	kdepimlibs4-devel
+BuildRequires:	qca2-devel
+BuildRequires:	openldap-devel
+Provides:	kde4-irc-client
 
 %description
 Konversation is a graphical Internet Relay Chat client (IRC)
@@ -34,19 +34,6 @@ Features:
 * Theme support for nick icons
 * Highly configurable
 						    
-%files -f %name.lang
-%defattr(-,root,root,-)
-%doc README
-%{_kde_bindir}/*
-%{_kde_datadir}/apps/%{name}
-%{_kde_datadir}/applications/kde4/%{name}.desktop
-%{_kde_iconsdir}/*/*/*/*
-%_kde_datadir/apps/kconf_update/*
-%_kde_datadir/kde4/services/konvirc.protocol
-%_kde_datadir/kde4/services/konvirc6.protocol
-
-#--------------------------------------------------------------------
-
 %prep
 %setup -q -n %{name}-%{version}
 %patch0 -p1 -b .default_channel
@@ -58,9 +45,18 @@ Features:
 %install
 rm -rf %{buildroot}
 %makeinstall_std -C build
-
 %find_lang --with-html %name 
 
 %clean
 rm -rf %{buildroot}
 
+%files -f %name.lang
+%defattr(-,root,root,-)
+%doc README
+%{_kde_bindir}/*
+%{_kde_datadir}/apps/%{name}
+%{_kde_datadir}/applications/kde4/%{name}.desktop
+%{_kde_iconsdir}/*/*/*/*
+%_kde_datadir/apps/kconf_update/*
+%_kde_datadir/kde4/services/konvirc.protocol
+%_kde_datadir/kde4/services/konvirc6.protocol
