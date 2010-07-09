@@ -1,6 +1,6 @@
 Name:		konversation
-Version:	1.2.3
-Release:	%mkrel 2
+Version:	1.3.1
+Release:	%mkrel 1
 Summary:	A user friendly IRC Client for KDE
 License:	GPLv2
 Group:		Networking/IRC
