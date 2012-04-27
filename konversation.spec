@@ -44,6 +44,7 @@ Features:
 %_kde_datadir/apps/kconf_update/*
 %_kde_datadir/kde4/services/konvirc.protocol
 %_kde_datadir/kde4/services/konvirc6.protocol
+%_kde_datadir/kde4/services/konvircs.protocol
 
 #--------------------------------------------------------------------
 						    
