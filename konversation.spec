@@ -58,7 +58,7 @@ Features:
 %install
 rm -rf %{buildroot}
 %makeinstall_std -C build
-%find_lang --with-html %name 
+%find_lang %name --with-html
 
 %clean
 rm -rf %{buildroot}
