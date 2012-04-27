@@ -1,11 +1,11 @@
 Name:		konversation
-Version:	1.3.1
-Release:	%mkrel 2
+Version:	1.4
+Release:	1
 Summary:	A user friendly IRC Client for KDE
 License:	GPLv2
 Group:		Networking/IRC
 URL:		http://konversation.kde.org
-Source0:	http://fr2.rpmfind.net/linux/KDE/stable/konversation/%{version}/src/%{name}-%{version}.tar.bz2
+Source0:	http://fr2.rpmfind.net/linux/KDE/stable/konversation/%{version}/src/%{name}-%{version}.tar.xz
 Patch0:		%{name}-1.2-default_channel.patch
 BuildRoot:	%{_tmppath}/%{name}-root
 BuildRequires:	kdelibs4-devel
