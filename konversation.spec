@@ -4,7 +4,7 @@ Version:	1.4
 Release:	5
 License:	GPLv2
 Group:		Networking/IRC
-URL:		http://konversation.kde.org
+Url:		http://konversation.kde.org
 Source0:	http://fr2.rpmfind.net/linux/KDE/stable/konversation/%{version}/src/%{name}-%{version}.tar.xz
 Source1:	konversation-ru.po
 #Patch0:		%{name}-1.2-default_channel.patch
@@ -35,10 +35,10 @@ Features:
 
 %files -f %{name}.lang
 %doc README
-%{_kde_bindir}}/*
-%{_kde_datadir}}/apps/%{name}
-%{_kde_datadir}}/applications/kde4/%{name}.desktop
-%{_kde_iconsdir}}/*/*/*/*
+%{_kde_bindir}/*
+%{_kde_datadir}/apps/%{name}
+%{_kde_datadir}/applications/kde4/%{name}.desktop
+%{_kde_iconsdir}/*/*/*/*
 %{_kde_datadir}/apps/kconf_update/*
 %{_kde_datadir}/kde4/services/konvirc.protocol
 %{_kde_datadir}/kde4/services/konvirc6.protocol
