@@ -1,16 +1,15 @@
 Summary:	A user friendly IRC Client for KDE
 Name:		konversation
-Version:	1.4
-Release:	6
-License:	GPLv2
+Version:	1.5
+Release:	1
+License:	GPLv2+
 Group:		Networking/IRC
 Url:		http://konversation.kde.org
 Source0:	http://fr2.rpmfind.net/linux/KDE/stable/konversation/%{version}/src/%{name}-%{version}.tar.xz
-Source1:	konversation-ru.po
-#Patch0:		%{name}-1.2-default_channel.patch
 BuildRequires:	kdelibs4-devel
 BuildRequires:	kdepimlibs4-devel
 BuildRequires:	openldap-devel
+BuildRequires:	pkgconfig(openssl)
 BuildRequires:	pkgconfig(qca2)
 Provides:	kde4-irc-client
 
@@ -19,6 +18,7 @@ Konversation is a graphical Internet Relay Chat client (IRC)
 with KDE support.
 
 Features:
+
 * Standard IRC features
 * SSL server support
 * Bookmarking support
@@ -36,20 +36,18 @@ Features:
 %files -f %{name}.lang
 %doc README
 %{_kde_bindir}/*
-%{_kde_datadir}/apps/%{name}
-%{_kde_datadir}/applications/kde4/%{name}.desktop
+%{_kde_appsdir}/%{name}
+%{_kde_appsdir}/kconf_update/*
+%{_kde_applicationsdir}/%{name}.desktop
 %{_kde_iconsdir}/*/*/*/*
-%{_kde_datadir}/apps/kconf_update/*
-%{_kde_datadir}/kde4/services/konvirc.protocol
-%{_kde_datadir}/kde4/services/konvirc6.protocol
-%{_kde_datadir}/kde4/services/konvircs.protocol
+%{_kde_services}/konvirc.protocol
+%{_kde_services}/konvirc6.protocol
+%{_kde_services}/konvircs.protocol
 
 #--------------------------------------------------------------------
 
 %prep
 %setup -q
-#%patch0 -p1 -b .default_channel
-cp %SOURCE1 po/ru/konversation.po
 
 %build
 %cmake_kde4
@@ -57,5 +55,5 @@ cp %SOURCE1 po/ru/konversation.po
 
 %install
 %makeinstall_std -C build
-%find_lang %{name} --with-html
 
+%find_lang %name --with-html
