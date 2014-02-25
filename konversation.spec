@@ -1,11 +1,12 @@
 Summary:	A user friendly IRC Client for KDE
 Name:		konversation
 Version:	1.5
-Release:	1
+Release:	2
 License:	GPLv2+
 Group:		Networking/IRC
 Url:		http://konversation.kde.org
 Source0:	http://fr2.rpmfind.net/linux/KDE/stable/konversation/%{version}/src/%{name}-%{version}.tar.xz
+Patch0:		konversation-1.5-default-channel.patch
 BuildRequires:	kdelibs4-devel
 BuildRequires:	kdepimlibs4-devel
 BuildRequires:	openldap-devel
@@ -48,6 +49,7 @@ Features:
 
 %prep
 %setup -q
+%apply_patches
 
 %build
 %cmake_kde4

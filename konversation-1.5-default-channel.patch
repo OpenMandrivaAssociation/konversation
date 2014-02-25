@@ -1,0 +1,12 @@
+diff -Naur konversation-1.5/src/config/preferences.cpp konversation-1.5.tpg/src/config/preferences.cpp
+--- konversation-1.5/src/config/preferences.cpp	2014-01-15 01:53:02.000000000 +0000
++++ konversation-1.5.tpg/src/config/preferences.cpp	2014-02-25 16:33:47.686776147 +0000
+@@ -68,7 +68,7 @@
+     serverGroup->addServer(server);
+     serverGroup->setIdentityId(mIdentity->id());
+     Konversation::ChannelSettings channel;
+-    channel.setName("#konversation");
++    channel.setName("#openmandriva-cooker");
+     serverGroup->addChannel(channel);
+     serverGroup->setExpanded(false);
+     mServerGroupHash.insert(0, serverGroup);
