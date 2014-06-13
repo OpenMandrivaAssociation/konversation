@@ -1,7 +1,7 @@
 Summary:	A user friendly IRC Client for KDE
 Name:		konversation
 Version:	1.5
-Release:	2
+Release:	3
 License:	GPLv2+
 Group:		Networking/IRC
 Url:		http://konversation.kde.org
