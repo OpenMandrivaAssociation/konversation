@@ -9,8 +9,8 @@ Source0:	http://fr2.rpmfind.net/linux/KDE/stable/konversation/%{version}/src/%{n
 Patch0:		konversation-1.5-default-channel.patch
 BuildRequires:	pkgconfig(Qt5Core)
 BuildRequires:	pkgconfig(Qt5Widgets)
-BuildRequires:	pkgconfig(Phonon4Qt5)
-BuildRequires:	pkgconfig(Qca-qt5)
+BuildRequires:	pkgconfig(phonon4qt5)
+BuildRequires:	pkgconfig(qca2-qt5)
 BuildRequires:	cmake(KF5Archive)
 BuildRequires:	cmake(KF5Bookmarks)
 BuildRequires:	cmake(KF5Config)
