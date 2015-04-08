@@ -57,14 +57,18 @@ Features:
 
 %files -f %{name}.lang
 %doc README
-%{_kde_bindir}/*
-%{_kde_appsdir}/%{name}
-%{_kde_appsdir}/kconf_update/*
-%{_kde_applicationsdir}/%{name}.desktop
-%{_kde_iconsdir}/*/*/*/*
-%{_kde_services}/konvirc.protocol
-%{_kde_services}/konvirc6.protocol
-%{_kde_services}/konvircs.protocol
+%{_bindir}/konversation
+%{_datadir}/applications/org.kde.konversation.desktop
+%{_iconsdir}/hicolor/*/*/konversation.png
+%{_datadir}/kconf_update/konversation*.pl
+%{_datadir}/kconf_update/konversation.upd
+%{_datadir}/knotifications5/konversation.notifyrc
+%{_datadir}/konversation/scripting_support/python/konversation/*.py
+%{_datadir}/konversation/scripts/*
+%{_datadir}/konversation/themes/*/*.desktop
+%{_datadir}/konversation/themes/*/*.png
+%{_datadir}/kservices5/*.protocol
+%{_datadir}/kxmlgui5/konversation/konversationui.rc
 
 #--------------------------------------------------------------------
 
