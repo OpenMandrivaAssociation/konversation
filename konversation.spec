@@ -1,22 +1,43 @@
-Summary:	A user friendly IRC Client for KDE
+Summary:	A user friendly IRC Client for Flasma 5
 Name:		konversation
-Version:	1.5.1
-Release:	2
+Version:	1.6
+Release:	1
 License:	GPLv2+
 Group:		Networking/IRC
 Url:		http://konversation.kde.org
 Source0:	http://fr2.rpmfind.net/linux/KDE/stable/konversation/%{version}/src/%{name}-%{version}.tar.xz
 Patch0:		konversation-1.5-default-channel.patch
-BuildRequires:	kdelibs4-devel
-BuildRequires:	kdepimlibs4-devel
-BuildRequires:	openldap-devel
-BuildRequires:	pkgconfig(openssl)
-BuildRequires:	pkgconfig(qca2)
+BuildRequires:	pkgconfig(Qt5Core)
+BuildRequires:	pkgconfig(Qt5Widgets)
+BuildRequires:	pkgconfig(Phonon4Qt5)
+BuildRequires:	pkgconfig(Qca-qt5)
+BuildRequires:	cmake(KF5Archive)
+BuildRequires:	cmake(KF5Bookmarks)
+BuildRequires:	cmake(KF5Config)
+BuildRequires:	cmake(KF5ConfigWidgets)
+BuildRequires:	cmake(KF5CoreAddons)
+BuildRequires:	cmake(KF5DocTools)
+BuildRequires:	cmake(KF5Emoticons)
+BuildRequires:	cmake(KF5I18n)
+BuildRequires:	cmake(KF5IdleTime)
+BuildRequires:	cmake(KF5NotifyConfig)
+BuildRequires:	cmake(KF5KIO)
+BuildRequires:	cmake(KF5Parts)
+BuildRequires:	cmake(KF5Solid)
+BuildRequires:	cmake(KF5Sonnet)
+BuildRequires:	cmake(KF5Wallet)
+BuildRequires:	cmake(KF5WidgetsAddons)
+BuildRequires:	cmake(KF5GlobalAccel)
+BuildRequires:	cmake(KF5DBusAddons)
+BuildRequires:	cmake(KF5Notifications)
+BuildRequires:	cmake(KF5WindowSystem)
+BuildRequires:	cmake(KF5IconThemes)
+BuildRequires:	cmake(KF5ItemViews)
 Provides:	kde4-irc-client
 
 %description
 Konversation is a graphical Internet Relay Chat client (IRC)
-with KDE support.
+with Plasma 5 support.
 
 Features:
 
@@ -52,7 +73,7 @@ Features:
 %apply_patches
 
 %build
-%cmake_kde4
+%cmake_qt5
 %make
 
 %install
