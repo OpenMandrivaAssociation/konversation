@@ -60,6 +60,7 @@ Features:
 %{_bindir}/konversation
 %{_datadir}/applications/org.kde.konversation.desktop
 %{_iconsdir}/hicolor/*/*/konversation.png
+%{_iconsdir}/hicolor/*/actions/konv_message.png
 %{_datadir}/kconf_update/konversation*.pl
 %{_datadir}/kconf_update/konversation.upd
 %{_datadir}/knotifications5/konversation.notifyrc
