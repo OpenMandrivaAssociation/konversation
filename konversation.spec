@@ -1,16 +1,17 @@
 Summary:	A user friendly IRC Client for Flasma 5
 Name:		konversation
 Version:	1.6
-Release:	1
+Release:	2
 License:	GPLv2+
 Group:		Networking/IRC
 Url:		http://konversation.kde.org
-Source0:	http://fr2.rpmfind.net/linux/KDE/stable/konversation/%{version}/src/%{name}-%{version}.tar.xz
+Source0:	http://download.kde.org/stable/konversation/%{version}/src/%{name}-%{version}.tar.xz
 Patch0:		konversation-1.6-default-channel.patch
 BuildRequires:	pkgconfig(Qt5Core)
 BuildRequires:	pkgconfig(Qt5Widgets)
 BuildRequires:	pkgconfig(phonon4qt5)
 BuildRequires:	pkgconfig(qca2-qt5)
+BuildRequires:	cmake(ECM)
 BuildRequires:	cmake(KF5Archive)
 BuildRequires:	cmake(KF5Bookmarks)
 BuildRequires:	cmake(KF5Config)
@@ -76,12 +77,12 @@ Features:
 %prep
 %setup -q
 %apply_patches
+%cmake_kde5
 
 %build
-%cmake_qt5
-%make
+%ninja -C build
 
 %install
-%makeinstall_std -C build
+%ninja_install -C build
 
 %find_lang %{name} --with-html
