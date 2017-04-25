@@ -1,6 +1,6 @@
 Summary:	A user friendly IRC Client for Flasma 5
 Name:		konversation
-Version:	1.6.2
+Version:	1.7
 Release:	1
 License:	GPLv2+
 Group:		Networking/IRC
