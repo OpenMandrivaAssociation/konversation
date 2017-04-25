@@ -1,6 +1,6 @@
 Summary:	A user friendly IRC Client for Flasma 5
 Name:		konversation
-Version:	1.6.2
+Version:	1.7
 Release:	1
 License:	GPLv2+
 Group:		Networking/IRC
@@ -70,9 +70,8 @@ Features:
 %{_datadir}/konversation/scripts/*
 %{_datadir}/konversation/themes/*/*.desktop
 %{_datadir}/konversation/themes/*/*.png
-%{_datadir}/kservices5/*.protocol
 %{_datadir}/kxmlgui5/konversation/konversationui.rc
-%{_datadir}/appdata/org.kde.konversation.appdata.xml
+%{_datadir}/metainfo/org.kde.konversation.appdata.xml
 
 #--------------------------------------------------------------------
 
