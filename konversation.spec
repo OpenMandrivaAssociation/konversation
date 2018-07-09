@@ -1,11 +1,11 @@
-Summary:	A user friendly IRC Client for Flasma 5
+Summary:	A user friendly IRC Client for Plasma 5
 Name:		konversation
-Version:	1.7.4
+Version:	1.7.5
 Release:	1
 License:	GPLv2+
 Group:		Networking/IRC
 Url:		http://konversation.kde.org
-Source0:	http://download.kde.org/stable/konversation/%{version}/src/%{name}-%{version}.tar.xz
+Source0:	http://download.kde.org/stable/%{name}/%{version}/src/%{name}-%{version}.tar.xz
 Patch0:		konversation-1.6-default-channel.patch
 BuildRequires:	pkgconfig(Qt5Core)
 BuildRequires:	pkgconfig(Qt5Widgets)

@@ -1,2 +1,4 @@
-sources:
+removed_sources:
   konversation-1.7.4.tar.xz: cf14066c73531d75f41934a8c4c29fd6a5f61b24
+sources:
+  konversation-1.7.5.tar.xz: c4f702f7eb4e1c869488fe005ddbcb1cbf31951c
