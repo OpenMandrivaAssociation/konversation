@@ -67,6 +67,7 @@ Features:
 %{_datadir}/kconf_update/konversation.upd
 %{_datadir}/knotifications5/konversation.notifyrc
 %{_datadir}/konversation/scripting_support/python/konversation/*.py
+%{_datadir}/konversation/scripting_support/python/konversation/__pycache__
 %{_datadir}/konversation/scripts/*
 %{_datadir}/konversation/themes/*/*.desktop
 %{_datadir}/konversation/themes/*/*.png
