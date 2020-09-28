@@ -1,7 +1,7 @@
 Summary:	A user friendly IRC Client for Plasma 5
 Name:		konversation
-Version:	1.7.5
-Release:	4
+Version:	1.7.6
+Release:	1
 License:	GPLv2+
 Group:		Networking/IRC
 Url:		http://konversation.kde.org
@@ -67,7 +67,7 @@ Features:
 %{_datadir}/kconf_update/konversation.upd
 %{_datadir}/knotifications5/konversation.notifyrc
 %{_datadir}/konversation/scripting_support/python/konversation/*.py
-%{_datadir}/konversation/scripting_support/python/konversation/__pycache__
+#% {_datadir}/konversation/scripting_support/python/konversation/__pycache__
 %{_datadir}/konversation/scripts/*
 %{_datadir}/konversation/themes/*/*.desktop
 %{_datadir}/konversation/themes/*/*.png
