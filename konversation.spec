@@ -1,11 +1,12 @@
+%define stable %([ "`echo %{version} |cut -d. -f3`" -ge 80 ] && echo -n un; echo -n stable)
 Summary:	A user friendly IRC Client for Plasma 5
 Name:		konversation
-Version:	1.7.6
+Version:	20.11.80
 Release:	1
 License:	GPLv2+
 Group:		Networking/IRC
 Url:		http://konversation.kde.org
-Source0:	http://download.kde.org/stable/%{name}/%{version}/src/%{name}-%{version}.tar.xz
+Source0:	http://download.kde.org/%{stable}/release-service/%{version}/src/%{name}-%{version}.tar.xz
 Patch0:		konversation-1.6-default-channel.patch
 BuildRequires:	pkgconfig(Qt5Core)
 BuildRequires:	pkgconfig(Qt5Widgets)
@@ -71,8 +72,10 @@ Features:
 %{_datadir}/konversation/scripts/*
 %{_datadir}/konversation/themes/*/*.desktop
 %{_datadir}/konversation/themes/*/*.png
-%{_datadir}/kxmlgui5/konversation/konversationui.rc
 %{_datadir}/metainfo/org.kde.konversation.appdata.xml
+%{_datadir}/knsrcfiles/konversation_nicklist_theme.knsrc
+%{_datadir}/konversation
+%{_datadir}/qlogging-categories5/konversation.categories
 
 #--------------------------------------------------------------------
 
