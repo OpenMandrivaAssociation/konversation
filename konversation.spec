@@ -1,7 +1,7 @@
 %define stable %([ "`echo %{version} |cut -d. -f3`" -ge 80 ] && echo -n un; echo -n stable)
 Summary:	A user friendly IRC Client for Plasma 5
 Name:		konversation
-Version:	20.11.80
+Version:	20.11.90
 Release:	1
 License:	GPLv2+
 Group:		Networking/IRC
