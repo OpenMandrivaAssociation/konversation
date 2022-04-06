@@ -1,7 +1,7 @@
 %define stable %([ "`echo %{version} |cut -d. -f3`" -ge 80 ] && echo -n un; echo -n stable)
 Summary:	A user friendly IRC Client for Plasma 5
 Name:		konversation
-Version:	21.12.2
+Version:	22.03.80
 Release:	1
 License:	GPLv2+
 Group:		Networking/IRC
@@ -68,15 +68,11 @@ Features:
 %{_datadir}/kconf_update/konversation*.pl
 %{_datadir}/kconf_update/konversation.upd
 %{_datadir}/knotifications5/konversation.notifyrc
-%{_datadir}/konversation/scripting_support/python/konversation/*.py
-#% {_datadir}/konversation/scripting_support/python/konversation/__pycache__
-%{_datadir}/konversation/scripts/*
-%{_datadir}/konversation/themes/*/*.desktop
-%{_datadir}/konversation/themes/*/*.png
+%{_datadir}/konversation
 %{_datadir}/metainfo/org.kde.konversation.appdata.xml
 %{_datadir}/knsrcfiles/konversation_nicklist_theme.knsrc
-%{_datadir}/konversation
 %{_datadir}/qlogging-categories5/konversation.categories
+%{_datadir}/dbus-1/services/org.kde.konversation.service
 
 #--------------------------------------------------------------------
 
