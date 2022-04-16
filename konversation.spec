@@ -9,6 +9,7 @@ Url:		http://konversation.kde.org
 Source0:	http://download.kde.org/%{stable}/release-service/%{version}/src/%{name}-%{version}.tar.xz
 Patch0:		konversation-1.6-default-channel.patch
 BuildRequires:	pkgconfig(Qt5Core)
+BuildRequires:  pkgconfig(Qt5Multimedia)
 BuildRequires:	pkgconfig(Qt5Widgets)
 BuildRequires:	pkgconfig(phonon4qt5)
 BuildRequires:	pkgconfig(qca2-qt5)
