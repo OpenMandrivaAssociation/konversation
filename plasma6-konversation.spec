@@ -44,6 +44,7 @@ BuildRequires:	cmake(KF6IconThemes)
 BuildRequires:	cmake(KF6ItemViews)
 BuildRequires:	cmake(KF6TextWidgets)
 BuildRequires:  qt6-qtbase-theme-gtk3
+BuildRequires:  qt6-qtmultimedia-gstreamer
 Provides:	kde4-irc-client
 
 %description
