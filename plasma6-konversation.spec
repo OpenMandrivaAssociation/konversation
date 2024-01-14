@@ -5,14 +5,17 @@ Version:	24.01.90
 Release:	2
 License:	GPLv2+
 Group:		Networking/IRC
-Url:		http://konversation.kde.org
-Source0:	http://download.kde.org/%{stable}/release-service/%{version}/src/konversation-%{version}.tar.xz
+Url:		https://konversation.kde.org
+Source0:	https://download.kde.org/%{stable}/release-service/%{version}/src/konversation-%{version}.tar.xz
 Patch0:		konversation-1.6-default-channel.patch
 BuildRequires:	pkgconfig(Qt6Core)
 BuildRequires:  pkgconfig(Qt6Multimedia)
 BuildRequires:  pkgconfig(Qt6Test)
 BuildRequires:	pkgconfig(Qt6Widgets)
 BuildRequires:	pkgconfig(phonon4qt6)
+BuildRequires:  cmake(Qt6Qml)
+BuildRequires:  cmake(Qt6QmlCore)
+BuildRequires:  cmake(Qt6QmlNetwork)
 BuildRequires:	cmake(Qca-qt6)
 BuildRequires:	cmake(ECM)
 BuildRequires:	cmake(KF6Archive)
@@ -26,6 +29,7 @@ BuildRequires:	cmake(KF6I18n)
 BuildRequires:	cmake(KF6IdleTime)
 BuildRequires:	cmake(KF6NotifyConfig)
 BuildRequires:	cmake(KF6KIO)
+BuildRequires:	cmake(KF6StatusNotifierItem)
 BuildRequires:	cmake(KF6Parts)
 BuildRequires:	cmake(KF6Solid)
 BuildRequires:	cmake(KF6Sonnet)
@@ -38,6 +42,8 @@ BuildRequires:	cmake(KF6Notifications)
 BuildRequires:	cmake(KF6WindowSystem)
 BuildRequires:	cmake(KF6IconThemes)
 BuildRequires:	cmake(KF6ItemViews)
+BuildRequires:	cmake(KF6TextWidgets)
+BuildRequires:  qt6-qtbase-theme-gtk3
 Provides:	kde4-irc-client
 
 %description
