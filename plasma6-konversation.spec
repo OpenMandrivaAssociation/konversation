@@ -1,12 +1,19 @@
+%define git 20240218
+%define gitbranch release/24.02
+%define gitbranchd %(echo %{gitbranch} |sed -e "s,/,-,g")
 %define stable %([ "`echo %{version} |cut -d. -f3`" -ge 80 ] && echo -n un; echo -n stable)
 Summary:	A user friendly IRC Client for Plasma 6
 Name:		plasma6-konversation
-Version:	24.01.95
-Release:	1
+Version:	24.01.96
+Release:	%{?git:0.%{git}.}1
 License:	GPLv2+
 Group:		Networking/IRC
 Url:		https://konversation.kde.org
+%if 0%{?git:1}
+Source0:	https://invent.kde.org/network/konversation/-/archive/%{gitbranch}/konversation-%{gitbranchd}.tar.bz2#/konversation-%{git}.tar.bz2
+%else
 Source0:	https://download.kde.org/%{stable}/release-service/%{version}/src/konversation-%{version}.tar.xz
+%endif
 Patch0:		konversation-1.6-default-channel.patch
 BuildRequires:	pkgconfig(Qt6Core)
 BuildRequires:  pkgconfig(Qt6Multimedia)
@@ -83,7 +90,7 @@ Features:
 #--------------------------------------------------------------------
 
 %prep
-%autosetup -p1 -n konversation-%{?git:master}%{!?git:%{version}}
+%autosetup -p1 -n konversation-%{?git:%{gitbranchd}}%{!?git:%{version}}
 %cmake \
 	-DKDE_INSTALL_USE_QT_SYS_PATHS:BOOL=ON \
 	-G Ninja
