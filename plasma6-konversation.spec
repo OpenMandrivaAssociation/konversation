@@ -15,10 +15,11 @@ Source0:	https://invent.kde.org/network/konversation/-/archive/%{gitbranch}/konv
 Source0:	https://download.kde.org/%{stable}/release-service/%{version}/src/konversation-%{version}.tar.xz
 %endif
 Patch0:		konversation-1.6-default-channel.patch
-BuildRequires:	pkgconfig(Qt6Core)
-BuildRequires:  pkgconfig(Qt6Multimedia)
-BuildRequires:  pkgconfig(Qt6Test)
-BuildRequires:	pkgconfig(Qt6Widgets)
+BuildRequires:	cmake(Qt6Core)
+BuildRequires:  cmake(Qt6Multimedia)
+BuildRequires:  cmake(Qt6Test)
+BuildRequires:	cmake(Qt6Widgets)
+BuildRequires:	cmake(Qt6Tools)
 BuildRequires:	pkgconfig(phonon4qt6)
 BuildRequires:  cmake(Qt6Qml)
 BuildRequires:  cmake(Qt6QmlCore)
