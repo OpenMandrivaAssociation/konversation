@@ -51,9 +51,8 @@ BuildRequires:	cmake(KF6WindowSystem)
 BuildRequires:	cmake(KF6IconThemes)
 BuildRequires:	cmake(KF6ItemViews)
 BuildRequires:	cmake(KF6TextWidgets)
-BuildRequires:  qt6-qtbase-theme-gtk3
 BuildRequires:  qt6-qtmultimedia-gstreamer
-Provides:	kde4-irc-client
+BuildRequires:	qt6-qttools-dbus
 
 %description
 Konversation is a graphical Internet Relay Chat client (IRC)
