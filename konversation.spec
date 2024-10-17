@@ -5,7 +5,7 @@ Version:	23.08.5
 Release:	1
 License:	GPLv2+
 Group:		Networking/IRC
-Url:		http://konversation.kde.org
+Url:		https://konversation.kde.org
 Source0:	http://download.kde.org/%{stable}/release-service/%{version}/src/%{name}-%{version}.tar.xz
 Patch0:		konversation-1.6-default-channel.patch
 BuildRequires:	pkgconfig(Qt5Core)
