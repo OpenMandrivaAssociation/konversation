@@ -5,7 +5,7 @@
 Summary:	A user friendly IRC Client for Plasma 6
 Name:		plasma6-konversation
 Version:	24.12.3
-Release:	%{?git:0.%{git}.}1
+Release:	%{?git:0.%{git}.}2
 License:	GPLv2+
 Group:		Networking/IRC
 Url:		https://konversation.kde.org
