@@ -4,7 +4,7 @@
 %define stable %([ "`echo %{version} |cut -d. -f3`" -ge 80 ] && echo -n un; echo -n stable)
 Summary:	A user friendly IRC Client for Plasma 6
 Name:		konversation
-Version:	25.04.0
+Version:	25.04.3
 Release:	%{?git:0.%{git}.}1
 License:	GPLv2+
 Group:		Networking/IRC
@@ -54,6 +54,11 @@ BuildRequires:	cmake(KF6TextWidgets)
 BuildRequires:  qt6-qtmultimedia-gstreamer
 BuildRequires:	qt6-qttools-dbus
 
+%rename plasma6-konversation
+
+BuildSystem:	cmake
+BuildOption:	-DKDE_INSTALL_USE_QT_SYS_PATHS:BOOL=ON
+
 %description
 Konversation is a graphical Internet Relay Chat client (IRC)
 with Plasma 6 support.
@@ -86,19 +91,3 @@ Features:
 %{_datadir}/knsrcfiles/konversation_nicklist_theme.knsrc
 %{_datadir}/qlogging-categories6/konversation.categories
 %{_datadir}/dbus-1/services/org.kde.konversation.service
-
-#--------------------------------------------------------------------
-
-%prep
-%autosetup -p1 -n konversation-%{?git:%{gitbranchd}}%{!?git:%{version}}
-%cmake \
-	-DKDE_INSTALL_USE_QT_SYS_PATHS:BOOL=ON \
-	-G Ninja
-
-%build
-%ninja -C build
-
-%install
-%ninja_install -C build
-
-%find_lang konversation --with-html
