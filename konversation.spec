@@ -4,7 +4,7 @@
 %define stable %([ "`echo %{version} |cut -d. -f3`" -ge 80 ] && echo -n un; echo -n stable)
 Summary:	A user friendly IRC Client for Plasma 6
 Name:		konversation
-Version:	26.04.3
+Version:	26.08.0
 Release:	%{?git:0.%{git}.}1
 License:	GPLv2+
 Group:		Networking/IRC
@@ -26,6 +26,9 @@ BuildRequires:  cmake(Qt6QmlCore)
 BuildRequires:  cmake(Qt6QmlNetwork)
 BuildRequires:	cmake(Qca-qt6)
 BuildRequires:	cmake(ECM)
+BuildRequires:	cmake(PySide6)
+BuildRequires:	cmake(Shiboken6)
+BuildRequires:	python%{pyver}dist(build)
 BuildRequires:	cmake(KF6Archive)
 BuildRequires:	cmake(KF6Bookmarks)
 BuildRequires:	cmake(KF6Config)
